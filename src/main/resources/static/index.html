@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><title>Склад магазина техники</title>
+<link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><h2>Склад магазина техники</h2><a href="/logout">Выйти</a></header>
+<main>
+  <div class="card">
+    <h3 id="formTitle">Новая запись</h3>
+    <input id="kind" placeholder="Вид техники">
+    <input id="group" placeholder="Группа техники">
+    <label>Дата ввоза<br><input id="dateIn" type="date"></label>
+    <label>Дата вывоза<br><input id="dateOut" type="date"></label>
+    <input id="driver" placeholder="ФИО водителя" style="width:220px">
+    <button onclick="save()">Сохранить</button>
+    <button class="light" onclick="resetForm()">Сбросить</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div class="card">
+    <input id="search" placeholder="Поиск по виду, группе или водителю" oninput="load()" style="width:340px">
+    <b style="margin-left:16px">Записей в таблице: <span id="count">0</span></b>
+    <p style="color:#666;margin:4px 0">Сортировка: по дате ввоза, затем по виду техники</p>
+    <table>
+      <thead><tr><th>ID</th><th>Вид техники</th><th>Группа</th><th>Дата ввоза</th>
+        <th>Дата вывоза</th><th>ФИО водителя</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Вывезено техники по дням (последние 30 дней, по дате вывоза)</h3>
+    <canvas id="hist" width="1050" height="280"></canvas>
+  </div>
+</main>
+<script src="/app.js"></script>
+</body></html>
